@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e8ff;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 40px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #d4a8ff;
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #8a2be2;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        tr:nth-child(even) {
+            background-color: #f8eaff;
+        }
+        tr:hover {
+            background-color: #e0c7ff;
+        }
+        td {
+            color: #5a189a;
+        }
+    </style>
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nama</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be added dynamically here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Data model
+        const Model = [
+            { Id: 1, nama: 'satu' },
+            { Id: 2, nama: 'dua' },
+            { Id: 3, nama: 'tiga' }
+        ];
+
+        // Reference to the table body
+        const tableBody = document.querySelector('#dataTable tbody');
+
+        // Populate the table
+        Model.forEach(item => {
+            const row = document.createElement('tr');
+            const cellId = document.createElement('td');
+            const cellNama = document.createElement('td');
+
+            cellId.textContent = item.Id;
+            cellNama.textContent = item.nama;
+
+            row.appendChild(cellId);
+            row.appendChild(cellNama);
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
